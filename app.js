@@ -5,12 +5,6 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 // db
 require('./constants/database');
-require('./models/User');
-require('./models/ShareCorner');
-require('./models/Notification');
-require('./models/News');
-require('./models/Contact');
-require('./models/ParishInfomation');
 
 var authRouter = require('./routes/authRouter');
 var defaultRouter = require('./routes/default');
