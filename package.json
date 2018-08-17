@@ -7,6 +7,7 @@
     },
     "dependencies": {
         "bcrypt": "^3.0.0",
+        "bluebird": "^3.5.1",
         "cookie-parser": "~1.4.3",
         "debug": "~2.6.9",
         "express": "~4.16.0",
@@ -19,6 +20,7 @@
         "mongoose-autoincrement": "^1.0.0",
         "mongoose-autoincrement-model": "^1.0.0",
         "mongoose-beautiful-unique-validation": "^7.1.1",
+        "mongoose-unique-validator": "^2.0.1",
         "morgan": "~1.9.0",
         "nodemon": "^1.18.3",
         "passport": "^0.4.0"

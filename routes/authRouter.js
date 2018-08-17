@@ -5,6 +5,9 @@ const AuthRouter = express.Router();
 // UserControler
 const UserControler = require('../controllers/UserController');
 AuthRouter.post('/user/create', UserControler.create);
+AuthRouter.post('/user/update', UserControler.update);
+AuthRouter.post('/user/delete', UserControler.delete);
+AuthRouter.get('/users/list', UserControler.list);
 
 // ContactControler
 const ContactControler = require('../controllers/ContactController');
