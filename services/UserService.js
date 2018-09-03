@@ -81,5 +81,17 @@ module.exports = {
         } catch (error) {
             return error;
         }
+    },
+    checkUser: async(data) => {
+        try {
+            const user = {
+                UserName: data.UserName
+            };
+
+            let result = await UserModel.find(user);
+            return result;
+        } catch (error) {
+            return error;
+        }
     }
 }

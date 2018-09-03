@@ -4,33 +4,33 @@ const AuthRouter = express.Router();
 
 // UserControler
 const UserControler = require('../controllers/UserController');
-AuthRouter.post('/user/create', UserControler.create);
-AuthRouter.post('/user/update', UserControler.update);
-AuthRouter.post('/user/delete', UserControler.delete);
-AuthRouter.get('/users/list', UserControler.list);
+AuthRouter.route('/user/create').post(UserControler.create);
+AuthRouter.route('/user/update').post(UserControler.update);
+AuthRouter.route('/user/delete').post(UserControler.delete);
+AuthRouter.route('/users/list').get(UserControler.list);
 
 // ContactControler
 const ContactControler = require('../controllers/ContactController');
-AuthRouter.post('/contact/create', ContactControler.create);
+AuthRouter.route('/contact/create').post(ContactControler.create);
 
 // NewsControler
 const NewsControler = require('../controllers/NewsController');
-AuthRouter.post('/news/create', NewsControler.create);
+AuthRouter.route('/news/create').post(NewsControler.create);
 
 // NotificatonController
 const NotificatonController = require('../controllers/NotificationController');
-AuthRouter.post('/notification/create', NotificatonController.create);
+AuthRouter.route('/notification/create').post(NotificatonController.create);
 
 // ParishInformatonControler
 const ParishInformatonControler = require('../controllers/ParishInfomationController');
-AuthRouter.post('/parishinformation/create', ParishInformatonControler.create);
+AuthRouter.route('/parishinformation/create').post(ParishInformatonControler.create);
 
 // ShareCornerControler
 const ShareCornerControler = require('../controllers/ShareCornerController');
-AuthRouter.post('/sharecorner/create', ShareCornerControler.create);
+AuthRouter.route('/sharecorner/create').post(ShareCornerControler.create);
 
 // CommentControler
 const CommentControler = require('../controllers/CommentController');
-AuthRouter.post('/comment/create', CommentControler.create);
+AuthRouter.route('/comment/create').post(CommentControler.create);
 
 module.exports = AuthRouter;
