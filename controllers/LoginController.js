@@ -10,10 +10,11 @@ module.exports = {
                 return res.json({ Success: false, Status: 215, Message: Codes[215] })
             } else {
                 let result = await UserService.checkUser(user);
-                if (!result) {
+                console.log(result)
+                if (isEmpty(result)) {
                     return res.json({ Success: false, Status: 215, Message: Codes[215] })
                 } else {
-                    return res.json({ Success: true, Status: 205, Message: Codes[205] })
+                    return res.json({ Success: true, Status: 205, Message: Codes[205], data: result })
                 }
             }
         } catch (error) {

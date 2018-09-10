@@ -5,7 +5,7 @@ const Promise = require('bluebird');
 
 
 module.exports = {
-    create: async(data) => {
+    create: async(data) => {       
         try {
             if (data) {
                 const set = {
@@ -20,6 +20,7 @@ module.exports = {
                     },
                     roles: data.roles
                 }
+
                 let result = await UserModel.create(set);
                 return result;
             } else {
@@ -84,11 +85,21 @@ module.exports = {
     },
     checkUser: async(data) => {
         try {
-            const user = {
-                UserName: data.UserName
+            const condition = {
+                UserName: data.UserName,
             };
 
-            let result = await UserModel.find(user);
+            
+            let result =   await UserModel.find(condition, (err, user) =>{
+                if(err){
+                    return err;
+                }else{
+                    if(data.Password && user.comparePassword(data.Password)){
+                        return user;
+                    }
+                    return null;
+                }
+            });
             return result;
         } catch (error) {
             return error;

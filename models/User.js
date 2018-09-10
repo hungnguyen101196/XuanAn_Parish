@@ -28,7 +28,7 @@ UserSchema.methods.hashPassword = function(password) {
     return bcrypt.hashSync(password, 14, null);
 };
 
-UserSchema.methods.comparePassword = function(password) {
+UserSchema.method.comparePassword = function(password) {
     bcrypt.compare(password, hashPassword).then(function(res) {
         return res;
     })
