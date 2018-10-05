@@ -20,6 +20,7 @@
         "mongoose-autoincrement": "^1.0.0",
         "mongoose-autoincrement-model": "^1.0.0",
         "mongoose-beautiful-unique-validation": "^7.1.1",
+        "mongoose-paginate": "^5.0.3",
         "mongoose-unique-validator": "^2.0.1",
         "morgan": "~1.9.0",
         "nodemon": "^1.18.3",
