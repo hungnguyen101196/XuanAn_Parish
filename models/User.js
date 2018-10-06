@@ -23,15 +23,35 @@ const UserSchema = new Schema({
     roles: { type: String, required: true }
 });
 
+
 UserSchema.plugin(beautifulUnique);
+// UserSchema.pre('save', function(next) {
+//     var user = this;
+
+//     // only hash the password if it has been modified (or is new)
+//     if (!user.isModified('Password')) return next();
+
+//     // generate a salt
+//     bcrypt.genSalt(14, function(err, salt) {
+//         if (err) return next(err);
+
+//         // hash the password using our new salt
+//         bcrypt.hash(user.Password, salt, function(err, hash) {
+//             if (err) return next(err);
+
+//             // override the cleartext password with the hashed one
+//             user.Password = hash;
+//             next();
+//         });
+//     });
+// });
+
 UserSchema.methods.hashPassword = function(password) {
-    return bcrypt.hashSync(password, 14, null);
+    return bcrypt.hashSync(password, 14);
 };
 
-UserSchema.method.comparePassword = function(password) {
-    bcrypt.compare(password, hashPassword).then(function(res) {
-        return res;
-    })
+UserSchema.methods.comparePassword = function(password) {
+    return bcrypt.compareSync(password, this.Password)
 }
 
 module.exports = mongoose.model('User', UserSchema);

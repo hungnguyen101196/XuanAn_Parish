@@ -1,28 +1,29 @@
 {
-    "name": "xuanan-parish",
-    "version": "0.0.0",
-    "private": true,
-    "scripts": {
-        "start": "nodemon ./bin/www"
-    },
-    "dependencies": {
-        "bcrypt": "^3.0.0",
-        "bluebird": "^3.5.1",
-        "cookie-parser": "~1.4.3",
-        "debug": "~2.6.9",
-        "express": "~4.16.0",
-        "hbs": "~4.0.1",
-        "http-errors": "~1.6.2",
-        "is-empty": "^1.2.0",
-        "jsonwebtoken": "^8.3.0",
-        "moment-timezone": "^0.5.21",
-        "mongoose": "^5.2.7",
-        "mongoose-autoincrement": "^1.0.0",
-        "mongoose-autoincrement-model": "^1.0.0",
-        "mongoose-beautiful-unique-validation": "^7.1.1",
-        "mongoose-unique-validator": "^2.0.1",
-        "morgan": "~1.9.0",
-        "nodemon": "^1.18.3",
-        "passport": "^0.4.0"
-    }
+  "name": "xuanan-parish",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "nodemon ./bin/www"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.0",
+    "bluebird": "^3.5.1",
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "express-session": "^1.15.6",
+    "hbs": "~4.0.1",
+    "http-errors": "~1.6.2",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "moment-timezone": "^0.5.21",
+    "mongoose": "^5.2.7",
+    "mongoose-autoincrement": "^1.0.0",
+    "mongoose-autoincrement-model": "^1.0.0",
+    "mongoose-beautiful-unique-validation": "^7.1.1",
+    "mongoose-unique-validator": "^2.0.1",
+    "morgan": "~1.9.0",
+    "nodemon": "^1.18.3",
+    "passport": "^0.4.0"
+  }
 }

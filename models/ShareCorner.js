@@ -10,7 +10,6 @@ const ShareCornerSchema = new Schema({
     Content: { type: String, required: true },
     UserId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     Status: { type: String, default: response.STATUS[200] },
-    UserId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: "User" },
     Image: { type: String },
     CreatedDate: { type: String, default: moment(new Date(Date.now())).format('DD-MM-YYYY HH:mm') },
 });

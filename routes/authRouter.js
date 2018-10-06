@@ -28,6 +28,7 @@ AuthRouter.route('/parishinformation/create').post(ParishInformatonControler.cre
 // ShareCornerControler
 const ShareCornerControler = require('../controllers/ShareCornerController');
 AuthRouter.route('/sharecorner/create').post(ShareCornerControler.create);
+AuthRouter.route('/sharecorner/list').post(ShareCornerControler.list);
 
 // CommentControler
 const CommentControler = require('../controllers/CommentController');

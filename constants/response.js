@@ -11,6 +11,7 @@ module.exports.CODES = {
     213: "Get list user failed",
     214: "User already exist",
     215: "User not found",
+    216: "UserName or Password incorrect",
     300: "",
     400: "",
     401: "",
