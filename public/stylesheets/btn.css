@@ -1,0 +1,53 @@
+.btn-view.btn,
+.btn-update.btn,
+.btn-remove.btn,
+.btn-lock.btn {
+    padding: 0;
+    background: none;
+    color: #6c757d;
+    box-shadow: none;
+}
+
+.btn-view,
+.btn-update,
+.btn-remove,
+.btn-lock {
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    -ms-border-radius: 50%;
+    -o-border-radius: 50%;
+}
+
+.btn-view:hover,
+.btn-update:hover,
+.btn-remove:hover,
+.btn-lock {
+    transition: .2s;
+    -webkit-transition: .2s;
+    -moz-transition: .2s;
+    -ms-transition: .2s;
+    -o-transition: .2s;
+}
+
+.btn-view:hover {
+    background: #1fe794;
+    color: #fff;
+}
+
+.btn-update:hover {
+    background: #1DA1F2;
+    color: #fff;
+}
+
+.btn-remove:hover {
+    background: #e7261f;
+    color: #fff;
+}
+
+.btn-lock:hover {
+    background: #c4b212;
+    color: #fff;
+}

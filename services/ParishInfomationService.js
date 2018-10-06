@@ -2,6 +2,7 @@ const ParishInformationModel = require('../models/ParishInfomation');
 
 
 module.exports = {
+
     create: async(data) => {
         console.log(data)
         try {

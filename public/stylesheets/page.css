@@ -1,0 +1,73 @@
+/* login */
+
+@import 'https://fonts.googleapis.com/css?family=Fjalla+One';
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+}
+
+#page-login {
+    width: 100%;
+    padding: 10px;
+    height: auto;
+    position: relative;
+}
+
+#page-login .wrapper-page-login {
+    border-radius: 10px;
+    width: 500px;
+    max-width: 500px;
+    height: auto;
+    padding: 10px;
+    background: white;
+    position: absolute;
+    left: 50%;
+    transform: translate(-50%);
+    -webkit-transform: translate(-50%);
+    -moz-transform: translate(-50%);
+    -ms-transform: translate(-50%);
+    -o-transform: translate(-50%);
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -o-border-radius: 10px;
+}
+
+#signin-form {
+    margin: 40px 0;
+}
+
+#signin-form .md-form label,
+#signup-form .md-form label {
+    font-size: 15px;
+}
+
+#form-signin .card,
+#form-signup .card {
+    border: none;
+    box-shadow: none;
+    margin-top: 20px;
+}
+
+.title-form-login.card-title h3 {
+    display: block;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 1.5rem;
+    color: #333333;
+    font-weight: 600;
+    line-height: 1.2;
+    text-align: center;
+}
+
+.img-logo-pagin-login {
+    width: 60px;
+    height: 60px;
+}
+
+.remember-password label,
+.forgot-password a {
+    font-size: 14px;
+}

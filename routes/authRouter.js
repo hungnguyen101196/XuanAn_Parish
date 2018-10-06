@@ -1,37 +1,44 @@
 const express = require('express');
-const AuthRouter = express.Router();
+const authRouter = express.Router();
 
 
 // UserControler
-const UserControler = require('../controllers/UserController');
-AuthRouter.route('/user/create').post(UserControler.create);
-AuthRouter.route('/user/update').post(UserControler.update);
-AuthRouter.route('/user/delete').post(UserControler.delete);
-AuthRouter.route('/users/list').get(UserControler.list);
+const UserController = require('../controllers/UserController');
+authRouter.route('/users').get(UserController.index);
+authRouter.route('/user/create').post(UserController.create);
+authRouter.route('/user/update').post(UserController.update);
+authRouter.route('/user/delete').post(UserController.delete);
+authRouter.route('/users/list').get(UserController.list);
 
 // ContactControler
-const ContactControler = require('../controllers/ContactController');
-AuthRouter.route('/contact/create').post(ContactControler.create);
+const ContactController = require('../controllers/ContactController');
+authRouter.route('/contact').get(ContactController.index);
+authRouter.route('/contact/create').post(ContactController.create);
 
 // NewsControler
-const NewsControler = require('../controllers/NewsController');
-AuthRouter.route('/news/create').post(NewsControler.create);
+const NewsController = require('../controllers/NewsController');
+authRouter.route('/news').get(NewsController.index);
+authRouter.route('/news/create').post(NewsController.create);
 
 // NotificatonController
-const NotificatonController = require('../controllers/NotificationController');
-AuthRouter.route('/notification/create').post(NotificatonController.create);
+const NotificationController = require('../controllers/NotificationController');
+authRouter.route('/notification').get(NotificationController.index);
+authRouter.route('/notification/create').post(NotificationController.create);
 
 // ParishInformatonControler
-const ParishInformatonControler = require('../controllers/ParishInfomationController');
-AuthRouter.route('/parishinformation/create').post(ParishInformatonControler.create);
+const ParishInformationController = require('../controllers/ParishInfomationController');
+authRouter.route('/parish-information').get(ParishInformationController.index);
+authRouter.route('/parishinformation/create').post(ParishInformationController.create);
 
 // ShareCornerControler
-const ShareCornerControler = require('../controllers/ShareCornerController');
-AuthRouter.route('/sharecorner/create').post(ShareCornerControler.create);
-AuthRouter.route('/sharecorner/list').post(ShareCornerControler.list);
+const ShareCornerController = require('../controllers/ShareCornerController');
+authRouter.route('/share-corner').get(ShareCornerController.index);
+authRouter.route('/sharecorner/create').post(ShareCornerController.create);
+authRouter.route('/sharecorner/list').post(ShareCornerController.list);
 
 // CommentControler
-const CommentControler = require('../controllers/CommentController');
-AuthRouter.route('/comment/create').post(CommentControler.create);
+const CommentController = require('../controllers/CommentController');
+authRouter.route('/comment').get(CommentController.index);
+authRouter.route('/comment/create').post(CommentController.create);
 
-module.exports = AuthRouter;
+module.exports = authRouter;

@@ -3,6 +3,9 @@ const Codes = require('../constants/response');
 const isEmpty = require('is-empty');
 const token = require('jsonwebtoken');
 module.exports = {
+    index: async(req, res) => {
+        res.render('login/index', { layout: 'login', title: "Cổng thông tin điện tử Giáo xứ Xuân An" })
+    },
     login: async(req, res) => {
         try {
             const data = req.body;
@@ -22,5 +25,6 @@ module.exports = {
             console.log(error)
             return res.json({ Success: false, Status: 501, Message: Codes[501] })
         }
-    }
+    },
+
 }

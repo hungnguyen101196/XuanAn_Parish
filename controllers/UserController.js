@@ -5,6 +5,9 @@ const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 
 module.exports = {
+    index: async(req, res) => {
+        res.render('user/index', { layout: 'user', title: "Cổng thông tin điện tử Giáo xứ Xuân An" })
+    },
     create: async(req, res) => {
         try {
             const UserName = {

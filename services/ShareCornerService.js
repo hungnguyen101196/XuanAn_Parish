@@ -2,6 +2,7 @@ const ShareCornerModel = require('../models/ShareCorner');
 const mongoose = require('mongoose')
 
 module.exports = {
+
     create: async(data) => {
         console.log(data)
         try {

@@ -1,0 +1,107 @@
+<div id="page-login" class="page-login">
+    <div class="wrapper-page-login">
+        <div class="header-page-login">
+            <ul class="nav nav-tabs" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active text-dark" data-toggle="tab" href="#form-signin">Đăng nhập</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-dark" data-toggle="tab" href="#form-signup">Đăng ký</a>
+                </li>
+            </ul>
+        </div>
+        <div class="body-page-login">
+            <div class="tab-content">
+                <div id="form-signin" class="tab-pane active">
+                    <div class="card">
+                        <div class="card-body px-lg-5 pt-0">
+                            <div class="title-form-login card-title text-center">
+                                <h3>Đăng nhập</h3>
+                            </div>
+                            <div class="logo-page-login text-center">
+                                <img src="https://www.magical-planet.com/wp-content/uploads/2018/03/Duomo-of-Milan-696x366.jpg" class="rounded-circle img-logo-pagin-login"
+                                    alt="Giáo xứ xuân an">
+                            </div>
+                            <form action="" class="text-center" name="formSignIn" id="signin-form" style="color: #757575;">
+                                <div class="md-form">
+                                    <input type="text" id="username" name="UserName" class="form-control">
+                                    <label for="username">Tài khoản</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="password" id="password" name="Password" class="form-control">
+                                    <label for="password">Mật khẩu</label>
+                                </div>
+
+                                <div class="d-flex justify-content-around">
+                                    <div>
+                                        <div class="remember-password">
+                                            <input type="checkbox" class="form-check-input" id="remember-form">
+                                            <label class="label-remember-password" for="remember-form">Nhớ mật khẩu</label>
+                                        </div>
+                                    </div>
+                                    <div class="forgot-password">
+                                        <a href="">Quên mật khẩu?</a>
+                                    </div>
+
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <button class="btn btn-primary btn-login col-md-12" type="button" ng-click="login()">Sign in</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div id="form-signup" class="tab-pane fade">
+                    <div class="card">
+                        <div class="card-body px-lg-5 pt-0">
+                            <div class="title-form-login card-title text-center">
+                                <h3>Đăng ký</h3>
+                            </div>
+                            <div class="logo-page-login text-center">
+                                <img src="https://www.magical-planet.com/wp-content/uploads/2018/03/Duomo-of-Milan-696x366.jpg" class="rounded-circle img-logo-pagin-login"
+                                    alt="Giáo xứ xuân an">
+                            </div>
+                            <form action="" class="text-center" name="formSignUp" id="signup-form" style="color: #757575;">
+                                <div class="md-form">
+                                    <input type="text" id="user_name" class="form-control">
+                                    <label for="username">Tài khoản</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="password" id="pass_word" class="form-control">
+                                    <label for="password">Mật khẩu</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="password" id="confirmpassword" class="form-control">
+                                    <label for="confirmpassword">Xác nhận mật khẩu</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="fullname" class="form-control">
+                                    <label for="fullname">Họ tên</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="address" class="form-control">
+                                    <label for="address">Địa chỉ</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="birthdate" class="form-control">
+                                    <label for="birthdate">Ngày sinh</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="mothername" class="form-control">
+                                    <label for="mothername">Tên cha</label>
+                                </div>
+                                <div class="md-form">
+                                    <input type="text" id="fathername" class="form-control">
+                                    <label for="fathername">Tên mẹ</label>
+                                </div>
+                                <div class="d-flex justify-content-around">
+                                    <button class="btn btn-primary btn-login col-md-12" ng-click="register()" type="button">Đăng ký</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
