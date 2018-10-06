@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const response = require('../constants/response');
+const mongoosePaginate = require('mongoose-paginate')
 const autoIncrement = require('mongoose-autoincrement-model');
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
@@ -16,6 +17,7 @@ const NewsSchema = new Schema({
 });
 
 autoIncrement.initialize(mongoose.connection);
+NewsSchema.plugin(mongoosePaginate);
 NewsSchema.plugin(autoIncrement.plugin, {
     model: 'News',
     field: 'NewsId',
