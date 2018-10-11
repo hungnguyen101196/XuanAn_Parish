@@ -5,5 +5,5 @@ const defaultRouter = express.Router();
 const LoginController = require('../controllers/LoginController');
 defaultRouter.route('/').get(LoginController.index);
 defaultRouter.route('/signin').post(LoginController.login);
-
+defaultRouter.route('/logout').get(LoginController.logout);
 module.exports = defaultRouter;

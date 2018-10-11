@@ -1,5 +1,5 @@
 const CommentService = require('../services/CommentService');
-const Codes = require('../constants/response');
+const Codes = require('../configs/response');
 
 
 

@@ -1,5 +1,5 @@
 const ContactService = require('../services/ContactService');
-const Codes = require('../constants/response');
+const Codes = require('../configs/response');
 
 
 

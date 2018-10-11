@@ -1,5 +1,5 @@
 const ShareCornerService = require('../services/ShareCornerService');
-const Codes = require('../constants/response');
+const Codes = require('../configs/response');
 const mongoose = require('mongoose')
 
 module.exports = {

@@ -1,30 +1,38 @@
 const UserService = require('../services/UserService');
-const Codes = require('../constants/response');
+const Codes = require('../configs/response');
+const contants = require('../configs/constants');
+const { CODES } = require('../configs/response');
 const isEmpty = require('is-empty');
-const token = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
+const passport = require('passport');
+
+
 module.exports = {
     index: async(req, res) => {
         res.render('login/index', { layout: 'login', title: "Cổng thông tin điện tử Giáo xứ Xuân An" })
     },
-    login: async(req, res) => {
-        try {
-            const data = req.body;
-            if (!data) {
-                return res.json({ Success: false, Status: 215, Message: Codes[215] })
-            } else {
-                let user = await UserService.checkUser(data);
-                console.log(user)
-                if (isEmpty(user)) {
-                    return res.json({ Success: false, Status: 215, Message: Codes[215] })
-                } else {
-                    return res.json({ Success: true, Status: 205, Message: Codes[205], data: user })
-
-                }
+    login: (req, res, next) => {
+        passport.authenticate('local', { failureRedirect: '/' }, function(err, user) {
+            if (err || !user) {
+                return res.json({ success: false, message: CODES[206], StatusCode: 206 })
             }
+            req.logIn(user, (err) => {
+                if (err) {
+                    return res.json({ success: false, message: CODES[206], StatusCode: 206, })
+                }
+
+                const token = jwt.sign({ data: user }, contants.secret, { expiresIn: '1h' })
+                return res.status(200).json({ success: true, message: CODES[205], data: user, token: token })
+            })
+        })(req, res, next)
+    },
+    logout: async(req, res) => {
+        try {
+            req.logout();
+            res.redirect('/');
         } catch (error) {
-            console.log(error)
             return res.json({ Success: false, Status: 501, Message: Codes[501] })
         }
-    },
+    }
 
 }

@@ -1,4 +1,3 @@
-
-(function(){
-    angular.module('XuanAnApp',[]);
+(function() {
+    angular.module('XuanAnApp', ['app.core']);
 }());

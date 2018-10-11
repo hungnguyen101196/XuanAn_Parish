@@ -5,8 +5,9 @@ var path = require('path');
 var hbs = require('express-handlebars')
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-// db
-require('./constants/database');
+var validator = require('express-validator')
+    // db
+require('./configs/database');
 
 var authRouter = require('./routes/authRouter');
 var defaultRouter = require('./routes/default');
@@ -32,6 +33,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+require('./configs/configsPassport')(app)
 app.use('/', defaultRouter);
 app.use('/admin', authRouter);
 

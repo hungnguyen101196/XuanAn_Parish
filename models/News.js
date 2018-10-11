@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const response = require('../constants/response');
+const response = require('../configs/response');
 const mongoosePaginate = require('mongoose-paginate')
 const autoIncrement = require('mongoose-autoincrement-model');
 const moment = require('moment-timezone');

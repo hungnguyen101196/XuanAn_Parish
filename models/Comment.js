@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-const response = require('../constants/response');
+const response = require('../configs/response');
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 

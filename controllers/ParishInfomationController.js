@@ -1,5 +1,5 @@
 const ParishInformationService = require('../services/ParishInfomationService');
-const Codes = require('../constants/response');
+const Codes = require('../configs/response');
 
 
 

@@ -1,6 +1,6 @@
 const UserModel = require('../models/User');
 const bcrypt = require('bcrypt');
-const response = require('../constants/response');
+const response = require('../configs/response');
 const shareModel = require('../models/ShareCorner')
 const Promise = require('bluebird');
 const moment = require('moment-timezone');
@@ -120,22 +120,23 @@ module.exports = {
             try {
                 if (data) {
                     var condition = {
-                        UserName: data.UserName,
-                        Password: UserModel.comparePassword()
+                        UserName: data.UserName
                     };
                     UserModel.findOne(condition).exec((err, user) => {
                         if (err) {
                             reject(err)
                         } else {
+
                             if (user && user.comparePassword(data.Password)) {
                                 resolve(user)
                             } else {
                                 reject(null)
                             }
                         }
-                    }).select('UserName Info')
+                    })
                 }
             } catch (error) {
+                console.log(error)
                 reject(error)
             }
         })

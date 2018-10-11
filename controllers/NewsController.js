@@ -1,5 +1,5 @@
 const NewsService = require('../services/NewsService');
-const Codes = require('../constants/response');
+const Codes = require('../configs/response');
 
 
 

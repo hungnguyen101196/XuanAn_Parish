@@ -1,6 +1,8 @@
 const UserService = require('../services/UserService');
-const response = require('../constants/response');
+const { CODES } = require('../configs/response');
 const isEmpty = require('is-empty');
+const { validationResult } = require('express-validator/check');
+const { UserValidator } = require('../validations/UserValidator')
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 
@@ -10,6 +12,10 @@ module.exports = {
     },
     create: async(req, res) => {
         try {
+            const error = validationResult(UserValidator(req.body));
+            if (error) {
+                return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
+            }
             const UserName = {
                 UserName: req.body.UserName
             };
@@ -17,15 +23,15 @@ module.exports = {
             if (isEmpty(user)) {
                 let result = await UserService.create(req.body);
                 if (result) {
-                    return res.json({ Success: true, StatusCode: 201, Message: response.CODES[201], data: result });
+                    return res.json({ Success: true, StatusCode: 201, Message: CODES[201], data: result });
                 } else {
-                    return res.json({ Success: false, StatusCode: 205, Message: response.CODES[205] });
+                    return res.json({ Success: false, StatusCode: 205, Message: CODES[205] });
                 }
             } else {
-                return res.json({ Success: false, StatusCode: 209, Message: response.CODES[209] });
+                return res.json({ Success: false, StatusCode: 209, Message: rCODES[209] });
             }
         } catch (error) {
-            return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
+            return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
         }
     },
     update: async(req, res) => {
@@ -95,5 +101,18 @@ module.exports = {
         } catch (error) {
             return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
         }
-    }
+    },
+    info: async(req, res) => {
+        try {
+
+            let result = await UserService.findUser(req.body);
+            if (!isEmpty(result)) {
+                return res.json({ Success: true, StatusCode: 204, Message: response.CODES[204], data: result })
+            } else {
+                return res.json({ Success: true, StatusCode: 208, Message: response.CODES[208] })
+            }
+        } catch (error) {
+            return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
+        }
+    },
 }
