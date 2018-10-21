@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="XuanAnApp">
 
 <head>
     <meta charset="UTF-8">
@@ -8,11 +8,11 @@
     <link rel="shortcut icon" href="https://www.magical-planet.com/wp-content/uploads/2018/03/Duomo-of-Milan-696x366.jpg">
     <title>{{title}}</title>
     {{> css}}
-    <script src="/javascripts/bower_components/jquery/dist/jquery.min.js"></script>
+
 
 </head>
 
-<body class="">
+<body class=""  ng-controller="UsersController">
 
     {{> header}}
     {{> sidebar_menu}}
@@ -24,6 +24,10 @@
     </main>
     {{> footer}}
     {{> js}}
+    {{> angular}}
+    <script src="/app/users/users.service.js"></script>
+    <script src="/app/users/users.validator.js"></script>
+    <script src="/app/users/users.controller.js"></script>
 
     <div ng-view></div>
 </body>

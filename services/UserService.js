@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const UserModel = require('../models/User');
 const bcrypt = require('bcrypt');
 const response = require('../configs/response');
@@ -6,27 +7,6 @@ const Promise = require('bluebird');
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 
-
-async function listshare(data) {
-    try {
-        if (data) {
-            const condition = {
-                UserId: data
-            }
-
-            let result = await shareModel.find(condition).populate({
-                path: "UserId",
-                select: "UserName Info.FullName"
-            });
-            return result;
-        } else {
-            console.log('no data')
-        }
-    } catch (error) {
-        console.log(error)
-        return error;
-    }
-}
 
 module.exports = {
     create: async(data) => {
@@ -101,17 +81,20 @@ module.exports = {
     },
     list: async() => {
         try {
+            UserModel.aggregate([{
+                $project: {
+                    face: {
+                        $cond: { if: { $eq: ["$roles", "Administrator"] }, then: { $sum: 1 }, else: 20 }
+                    }
+                }
+            }], (err, users) => {
+                console.log(users)
+            })
+
             let result = await UserModel.find().select("_id UserName Info Status CreatedDate roles");
-            var promise = [];
-            for (let i = 0; i < result.length; i++) {
-                promise.push(listshare(result[i]['_id']));
-            }
-            promise.push(result)
-            let res = await Promise.all(promise);
-            console.log(res);
             return result;
         } catch (error) {
-            console(error)
+            console.log(error)
             return error;
         }
     },

@@ -5,7 +5,7 @@
 
     function LoginService($http) {
         this.login = function(data) {
-            return $http.post('/signIn', data).then((response) => {
+            return $http.post('/signin', data).then((response) => {
                 return response
             }).catch((err) => { return err; })
         };

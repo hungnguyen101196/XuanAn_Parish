@@ -51,18 +51,18 @@ module.exports = {
                     };
                     let result = await UserService.update(set);
                     if (!isEmpty(result)) {
-                        return res.json({ Success: true, StatusCode: 202, Message: response.CODES[202], data: result });
+                        return res.json({ Success: true, StatusCode: 202, Message: CODES[202], data: result });
                     } else {
-                        return res.json({ Success: false, StatusCode: 206, Message: response.CODES[206] });
+                        return res.json({ Success: false, StatusCode: 206, Message: CODES[206] });
                     }
                 } else {
-                    return res.json({ Success: false, StatusCode: 210, Message: response.CODES[210] });
+                    return res.json({ Success: false, StatusCode: 210, Message: CODES[210] });
                 }
             } else {
-                return res.json({ Success: false, StatusCode: 210, Message: response.CODES[210] });
+                return res.json({ Success: false, StatusCode: 210, Message: CODES[210] });
             }
         } catch (error) {
-            return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
+            return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
         }
     },
     delete: async(req, res) => {
@@ -75,31 +75,32 @@ module.exports = {
                 if (!isEmpty(user)) {
                     let result = await UserService.delete(id);
                     if (!isEmpty(result)) {
-                        return res.json({ Success: true, StatusCode: 203, Message: response.CODES[203], data: result })
+                        return res.json({ Success: true, StatusCode: 203, Message: CODES[203], data: result })
                     } else {
-                        return res.json({ Success: true, StatusCode: 207, Message: response.CODES[207], data: result })
+                        return res.json({ Success: true, StatusCode: 207, Message: CODES[207], data: result })
                     }
                 } else {
-                    return res.json({ Success: false, StatusCode: 210, Message: response.CODES[210] })
+                    return res.json({ Success: false, StatusCode: 210, Message: CODES[210] })
                 }
             } else {
-                return res.json({ Success: false, StatusCode: 210, Message: response.CODES[210] })
+                return res.json({ Success: false, StatusCode: 210, Message: CODES[210] })
             }
 
         } catch (error) {
-            return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
+            return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
         }
     },
     list: async(req, res) => {
         try {
             let result = await UserService.list();
             if (!isEmpty(result)) {
-                return res.json({ Success: true, StatusCode: 204, Message: response.CODES[204], data: result })
+                return res.json({ Success: true, StatusCode: 204, Message: CODES[204], data: result })
             } else {
-                return res.json({ Success: true, StatusCode: 208, Message: response.CODES[208] })
+                return res.json({ Success: true, StatusCode: 208, Message: CODES[208] })
             }
         } catch (error) {
-            return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
+            console.log(error)
+            return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
         }
     },
     info: async(req, res) => {
@@ -107,12 +108,12 @@ module.exports = {
 
             let result = await UserService.findUser(req.body);
             if (!isEmpty(result)) {
-                return res.json({ Success: true, StatusCode: 204, Message: response.CODES[204], data: result })
+                return res.json({ Success: true, StatusCode: 204, Message: CODES[204], data: result })
             } else {
-                return res.json({ Success: true, StatusCode: 208, Message: response.CODES[208] })
+                return res.json({ Success: true, StatusCode: 208, Message: CODES[208] })
             }
         } catch (error) {
-            return res.json({ Success: false, StatusCode: 501, Message: response.CODES[501] });
+            return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
         }
     },
 }
