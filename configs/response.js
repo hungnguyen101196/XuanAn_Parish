@@ -5,7 +5,7 @@ module.exports.CODES = {
     203: "Delete user success",
     204: "Get list user success",
     205: "Login success",
-    206: "Login failed",
+    206: "UserName or Password incorrect.",
     210: "Create user failed",
     211: "Update user failed",
     212: "Delete user failed",

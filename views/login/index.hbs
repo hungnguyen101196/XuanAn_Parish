@@ -22,7 +22,10 @@
                                 <img src="https://www.magical-planet.com/wp-content/uploads/2018/03/Duomo-of-Milan-696x366.jpg" class="rounded-circle img-logo-pagin-login"
                                     alt="Giáo xứ xuân an">
                             </div>
-                            <form class="text-center" name="formSignIn"  id="signin-form" style="color: #757575;">
+                            <form class="text-center" name="formSignIn"  ng-validate="formValidation" id="signin-form" style="color: #757575;">
+                                <div class="alert" ng-class="alertClass" ng-if="alertShow">
+                                    <span>\{{message}}</span>
+                                </div>
                                 <div class="md-form">
                                     <input type="text" id="username" ng-model="formLogin.UserName" name="UserName" class="form-control">
                                     <label for="username">Tài khoản</label>

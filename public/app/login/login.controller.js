@@ -3,15 +3,27 @@
         .controller('LoginController', LoginController);
 
 
-    LoginController.$inject = ['$scope', 'LoginService', 'toastr'];
+    LoginController.$inject = ['$scope', 'LoginService', 'LoginValidator'];
 
-    function LoginController($scope, LoginService, toastr) {
-        $scope.login = function() {
-            LoginService.login($scope.formLogin).then((response) => {
-                if (response.data.success) {
-                    window.location.href = "/admin"
-                }
-            }).catch((err) => console.log(err))
+    function LoginController($scope, LoginService, LoginValidator) {
+        $scope.formValidation = LoginValidator.validationOptions();
+        $scope.login = function(form) {
+            if(form.validate()){
+                LoginService.login($scope.formLogin).then((response) => {
+                    
+                    console.log(response)
+                    if (response.success) {
+                        window.location.href = "/admin"
+                    }else{
+                        $scope.message = response.message;
+                        $scope.alertClass = "alert-danger";
+                        $scope.alertShow = true;
+                    }
+                }).catch((err) => console.log(err))
+            }else{
+                
+            }
+            
         };
     }
 }())
