@@ -11,6 +11,7 @@ moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 module.exports = {
     create: async(data) => {
         try {
+            console.log(data)
             if (data) {
                 const set = {
                     UserName: data.UserName,
@@ -22,11 +23,15 @@ module.exports = {
                         MotherName: data.Info.MotherName,
                         Address: data.Info.Address
                     },
-                    roles: data.roles
-                }
-
-                let result = await UserModel.create(set);
-                return result;
+                    Roles: data.Roles
+                };
+                UserModel.create(set, (err, user) =>{
+                    if(err){
+                        return Promise.reject(err);
+                    }else{
+                        return Promise.resolve(user)
+                    }
+                })
             } else {
                 const error = {
                     Success: false,

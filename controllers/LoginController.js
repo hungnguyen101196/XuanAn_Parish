@@ -14,13 +14,12 @@ module.exports = {
     login: (req, res, next) => {
         passport.authenticate('local', { failureRedirect: '/' }, function(err, user) {
             if (err || !user) {
-                return res.json({ success: false, message: CODES[206], StatusCode: 206 })
+                return res.json({ success: false, message: CODES[206], StatusCode: 206, error: err })
             }
             req.logIn(user, (err) => {
                 if (err) {
                     return res.json({ success: false, message: CODES[206], StatusCode: 206, })
                 }
-
                 const token = jwt.sign({ data: user }, contants.secret, { expiresIn: '1h' })
                 return res.status(200).json({ success: true, message: CODES[205], data: user, token: token })
             })

@@ -1,8 +1,7 @@
 const UserService = require('../services/UserService');
 const { CODES } = require('../configs/response');
 const isEmpty = require('is-empty');
-const { validationResult } = require('express-validator/check');
-const { UserValidator } = require('../validations/UserValidator')
+const { UserCreateValidator } = require('../validations/UserValidator')
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 
@@ -12,25 +11,28 @@ module.exports = {
     },
     create: async(req, res) => {
         try {
-            const error = validationResult(UserValidator(req.body));
-            if (error) {
-                return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
+            req.checkBody(UserCreateValidator)
+            const errors = req.validationErrors();
+            if(errors){
+                return res.json({ Success: false, StatusCode: 501, Message: CODES[501], errors: errors });
             }
             const UserName = {
                 UserName: req.body.UserName
             };
             let user = await UserService.findUser(UserName);
+
             if (isEmpty(user)) {
                 let result = await UserService.create(req.body);
                 if (result) {
                     return res.json({ Success: true, StatusCode: 201, Message: CODES[201], data: result });
                 } else {
-                    return res.json({ Success: false, StatusCode: 205, Message: CODES[205] });
+                    return res.json({ Success: false, StatusCode: 210, Message: CODES[210] });
                 }
             } else {
-                return res.json({ Success: false, StatusCode: 209, Message: rCODES[209] });
+                return res.json({ Success: false, StatusCode: 209, Message: CODES[209] });
             }
         } catch (error) {
+            console.log(error)
             return res.json({ Success: false, StatusCode: 501, Message: CODES[501] });
         }
     },

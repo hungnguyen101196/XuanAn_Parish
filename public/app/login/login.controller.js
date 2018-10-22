@@ -20,9 +20,24 @@
                         $scope.alertShow = true;
                     }
                 }).catch((err) => console.log(err))
-            }else{
-                
             }
+        };
+
+        $scope.register = function(form) {
+           // if(form.validate()){
+                LoginService.register($scope.formSignUp).then((response) => {
+                    console.log(response)
+                    // if (response.success) {
+                    //     window.location.href = "/admin"
+                    // }else{
+                    //     $scope.message = response.message;
+                    //     $scope.alertClass = "alert-danger";
+                    //     $scope.alertShow = true;
+                    // }
+                }).catch((err) => console.log(err))
+            // }else{
+                
+            // }
             
         };
     }

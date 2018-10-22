@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 const response = require('../configs/response');
 const bcrypt = require('bcrypt');
 const beautifulUnique = require('mongoose-beautiful-unique-validation');
+const mongoosePaginate = require('mongoose-paginate');
 const uniqueValidator = require('mongoose-unique-validator');
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
@@ -19,12 +20,19 @@ const UserSchema = new Schema({
     },
     Status: { type: String, default: response.STATUS[200] },
     CreatedDate: { type: String, default: moment(new Date(Date.now())).format('DD-MM-YYYY HH:mm') },
-    UpdateDate: { type: String },
-    roles: { type: String, required: true }
+    UpdatedDate: { type: String },
+    Roles: { type: String, required: true, enum:['Administrator', 'Member', 'User'] }
 });
 
 
 UserSchema.plugin(beautifulUnique);
+UserSchema.plugin(mongoosePaginate)
+UserSchema.index({UserName: 1})
+UserSchema.index({"Info.Address": 1})
+UserSchema.index({"Info.FullName": 1})
+UserSchema.index({"Info.FatherName": 1})
+UserSchema.index({"Info.MotherName": 1})
+UserSchema.index({Roles: 1})
 // UserSchema.pre('save', function(next) {
 //     var user = this;
 

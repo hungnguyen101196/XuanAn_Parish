@@ -27,6 +27,7 @@ app.use(session({
     saveUninitialized: true,
     resave: true
 }))
+app.use(validator())
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));

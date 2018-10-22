@@ -1,23 +1,30 @@
-module.exports.UserValidator = {
+module.exports.UserCreateValidator = {
     UserName: {
-        required: true,
-        min: 6
+        notEmpty: true,
+        errorMessage: "UserName is required"
     },
     Password: {
-        required: true,
-        min: 6
+        notEmpty: true,
+        errorMessage: "Password is required"
     },
-    Password: {
-        required: true,
-        email: true
+    "Info.Address": {
+        notEmpty: true,
+        errorMessage: "Address is required"
     },
-    Mobile: {
-        required: true,
-        number: true,
-        min: 10,
-        max: 10
+    "Info.MotherName":{
+        notEmpty: true,
+        errorMessage: "Mother name is required"
     },
-    Address: {
-        required: true
+    "Info.FatherName":{
+        notEmpty: true,
+        errorMessage: "Father name is required"
+    },
+    "Info.FullName":{
+        notEmpty: true,
+        errorMessage: "Full name is required"
+    },
+    Roles: {
+        notEmpty: true,
+        errorMessage: "Roles is required"
     }
 }

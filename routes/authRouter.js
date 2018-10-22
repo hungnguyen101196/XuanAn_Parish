@@ -10,7 +10,7 @@ authRouter.route('/').get(auth.isAuthentication, HomeController.index);
 // UserControler
 const UserController = require('../controllers/UserController');
 authRouter.route('/users').get(auth.isAuthentication, UserController.index);
-authRouter.route('/user/create').post(auth.isAuthentication, UserController.create);
+authRouter.route('/user/create').post(UserController.create);
 authRouter.route('/user/update').post(auth.isAuthentication, UserController.update);
 authRouter.route('/user/delete').post(auth.isAuthentication, UserController.delete);
 authRouter.route('/users/list').get(auth.isAuthentication, UserController.list);

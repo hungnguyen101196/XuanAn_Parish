@@ -18,6 +18,9 @@ const NewsSchema = new Schema({
 
 autoIncrement.initialize(mongoose.connection);
 NewsSchema.plugin(mongoosePaginate);
+NewsSchema.indexes({
+    PostName: 1,Content: 1,UserId: 1
+})
 NewsSchema.plugin(autoIncrement.plugin, {
     model: 'News',
     field: 'NewsId',

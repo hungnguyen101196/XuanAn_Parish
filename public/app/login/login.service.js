@@ -10,8 +10,8 @@
             }).catch((err) => { return err; })
         };
 
-        this.register = function() {
-            return $http.post('/register').then((response) => {
+        this.register = function(data) {
+            return $http.post('/admin/user/create', data).then((response) => {
                 return response.data;
             }).catch(err => { return err; })
         }

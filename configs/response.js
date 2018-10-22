@@ -17,7 +17,7 @@ module.exports.CODES = {
     400: "",
     401: "",
     500: "",
-    501: "Catch Error"
+    501: "Params Error"
 };
 
 module.exports.STATUS = {
