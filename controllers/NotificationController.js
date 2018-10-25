@@ -4,10 +4,15 @@ const Codes = require('../configs/response');
 
 
 module.exports = {
-    index: async(req, res) => {
-        res.render('notification/index', { layout: 'notification', title: "Cổng thông tin điện tử Giáo xứ Xuân An" })
+    index: async (req, res) => {
+        res.render('notification/index', {
+            layout: 'notification',
+            title: "Cổng thông tin điện tử Giáo xứ Xuân An",
+            logo: "/images/logos/Duomo-of-Milan-696x366.ico",
+            activity: 'Notification'
+        })
     },
-    list: async(req, res) => {
+    list: async (req, res) => {
         try {
             let result = NotificationService.list(req.body);
             console.log(result);
@@ -16,7 +21,7 @@ module.exports = {
             return res.json(error)
         }
     },
-    create: async(req, res) => {
+    create: async (req, res) => {
         try {
             let result = NotificationService.create(req.body);
             console.log(result);
@@ -25,7 +30,7 @@ module.exports = {
             return res.json(error)
         }
     },
-    update: async(req, res) => {
+    update: async (req, res) => {
         try {
             let result = NotificationService.update(req.body);
             console.log(result);
@@ -34,7 +39,7 @@ module.exports = {
             return res.json(error)
         }
     },
-    info: async(req, res) => {
+    info: async (req, res) => {
         try {
             let result = NotificationService.findNotification(req.body);
             console.log(result);
@@ -43,7 +48,7 @@ module.exports = {
             return res.json(error)
         }
     },
-    delete: async(req, res) => {
+    delete: async (req, res) => {
         try {
             let result = NotificationService.delete(req.body);
             console.log(result);

@@ -2,7 +2,8 @@ var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
-var hbs = require('express-handlebars')
+var hbs = require('express-handlebars');
+var helpers = require('./helper/helper');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var validator = require('express-validator')
@@ -18,7 +19,8 @@ app.engine('hbs', hbs({
     extname: 'hbs',
     layoutsDir: __dirname + '/views/layouts/',
     partialsDir: __dirname + '/views/partials/',
-    defaultLayout: __dirname + '/views/layout'
+    defaultLayout: __dirname + '/views/layout',
+    helpers: helpers
 })); // view engine setup
 app.set('views', path.join(path.join(__dirname, 'views')));
 app.set('view engine', 'hbs');

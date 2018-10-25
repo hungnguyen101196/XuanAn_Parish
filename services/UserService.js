@@ -11,7 +11,6 @@ moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 module.exports = {
     create: async(data) => {
         try {
-            console.log(data)
             if (data) {
                 const set = {
                     UserName: data.UserName,
@@ -43,7 +42,6 @@ module.exports = {
             console.log(error)
             return error;
         }
-
     },
     findUser: async(data) => {
         try {
@@ -114,7 +112,6 @@ module.exports = {
                         if (err) {
                             reject(err)
                         } else {
-
                             if (user && user.comparePassword(data.Password)) {
                                 resolve(user)
                             } else {

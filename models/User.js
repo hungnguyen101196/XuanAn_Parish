@@ -11,6 +11,7 @@ moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
 const UserSchema = new Schema({
     UserName: { type: String, required: true, unique: true },
     Password: { type: String, required: true },
+    UserGroup: {type: mongoose.Schema.Types.ObjectId, required: true, ref:'UsersGroup'},
     Info: {
         FullName: { type: String, required: true },
         BirthDate: { type: String, required: true },
@@ -21,7 +22,6 @@ const UserSchema = new Schema({
     Status: { type: String, default: response.STATUS[200] },
     CreatedDate: { type: String, default: moment(new Date(Date.now())).format('DD-MM-YYYY HH:mm') },
     UpdatedDate: { type: String },
-    Roles: { type: String, required: true, enum:['Administrator', 'Member', 'User'] }
 });
 
 

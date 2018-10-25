@@ -13,11 +13,13 @@ module.exports.CODES = {
     214: "User already exist",
     215: "User not found",
     216: "UserName or Password incorrect",
-    300: "",
+    300: "Create user group success",
+    301: "Create user group failed",
     400: "",
     401: "",
     500: "",
-    501: "Params Error"
+    501: "Params Error",
+    502: "Catch Error"
 };
 
 module.exports.STATUS = {
