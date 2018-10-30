@@ -6,8 +6,10 @@ var hbs = require('express-handlebars');
 var helpers = require('./helper/helper');
 var cookieParser = require('cookie-parser');
 var logger = require('morgan');
-var validator = require('express-validator')
-    // db
+var validator = require('express-validator');
+var mongoose = require('mongoose');
+var MongoStore = require('connect-mongo')(session);
+// db
 require('./configs/database');
 
 var authRouter = require('./routes/authRouter');
@@ -26,6 +28,9 @@ app.set('views', path.join(path.join(__dirname, 'views')));
 app.set('view engine', 'hbs');
 app.use(session({
     secret: 'xuananapp',
+    store: new MongoStore({
+        mongooseConnection: mongoose.connection
+    }),
     saveUninitialized: true,
     resave: true
 }))
@@ -34,6 +39,7 @@ app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(validator());
 app.use(express.static(path.join(__dirname, 'public')));
 
 require('./configs/configsPassport')(app)

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 (function(){
     angular.module('XuanAnApp')
             .factory('LoginValidator', function (){
@@ -43,3 +44,5 @@
                 return factoryObj;
             })
 }());
+=======
+>>>>>>> b896a607c98e63722e0bf4669c87910f6baf47f3
