@@ -1,23 +1,34 @@
 module.exports.UserValidator = {
     UserName: {
-        required: true,
+        notEmpty: true,
         min: 6
     },
     Password: {
-        required: true,
+        notEmpty: true,
         min: 6
     },
-    Password: {
-        required: true,
+    Email: {
+        notEmpty: true,
         email: true
     },
     Mobile: {
-        required: true,
+        notEmpty: true,
         number: true,
         min: 10,
         max: 10
     },
     Address: {
-        required: true
+        notEmpty: true,
+    }
+}
+module.exports.LoginValidator = {
+    UserName: {
+        notEmpty: true,
+        errorMessage: "UserName is required",
+
+    },
+    Password: {
+        notEmpty: true,
+        errorMessage: "Password is required"
     }
 }
