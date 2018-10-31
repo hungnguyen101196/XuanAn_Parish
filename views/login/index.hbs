@@ -23,7 +23,7 @@
                                     class="rounded-circle img-logo-pagin-login" alt="Giáo xứ xuân an">
                             </div>
 
-                            <form class="text-center" name="formSignIn" ng-submit="login(formSignIn)" ng-validate="validationOptions"
+                            <form class="text-center" name="formSignIn"  ng-validate="formValidation"
                                 id="signin-form" style="color: #757575;">
                                 <div class="alert" ng-class="alertClass" ng-if="alertShow">
                                     <span>\{{message}}</span>
@@ -54,11 +54,7 @@
 
                                 </div>
                                 <div class="d-flex justify-content-around">
-                                    <<<<<<< HEAD <button type="button" ng-click="login(formSignIn)" class="btn btn-primary btn-login col-md-12">Sign
-                                        in</button>
-                                        =======
-                                        <button type="submit" class="btn btn-primary btn-login col-md-12">Sign in</button>
-                                        >>>>>>> b896a607c98e63722e0bf4669c87910f6baf47f3
+                                    <button type="button" ng-click="login(formSignIn)" class="btn btn-primary btn-login col-md-12">Sign in</button>
                                 </div>
                             </form>
                         </div>

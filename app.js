@@ -2,6 +2,7 @@ var createError = require('http-errors');
 var express = require('express');
 var session = require('express-session');
 var path = require('path');
+var bodyParser = require('body-parser')
 var hbs = require('express-handlebars');
 var helpers = require('./helper/helper');
 var cookieParser = require('cookie-parser');
@@ -36,8 +37,8 @@ app.use(session({
 }))
 app.use(validator())
 app.use(logger('dev'));
-app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }))
 app.use(cookieParser());
 app.use(validator());
 app.use(express.static(path.join(__dirname, 'public')));

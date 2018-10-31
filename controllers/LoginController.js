@@ -32,12 +32,31 @@ module.exports = {
                     if (err) {
                         return res.json({ success: false, message: CODES[206], StatusCode: 206, })
                     }
-
-                    const token = jwt.sign({ data: user }, contants.secret, { expiresIn: '1h' })
-                    return res.status(200).json({ success: true, message: CODES[205], data: user, token: token })
+                    const token = jwt.sign({
+                        data: {
+                            Info: user.Info,
+                            UserName: user.UserName,
+                            _id: user._id
+                        }
+                    }, contants.secret, { expiresIn: 1440 });
+                    console.log(token)
+                    return res.status(200).send({
+                        success: true,
+                        message: CODES[205],
+                        data: {
+                            Info: user.Info,
+                            Status: user.Status,
+                            UserName: user.UserName,
+                            CreatedDate: user.CreatedDate,
+                            roles: user.roles,
+                            _id: user._id
+                        },
+                        token: token
+                    })
                 })
             })(req, res, next)
         } catch (error) {
+            console.log(error)
             return res.json({ success: false, message: CODES[501], error: error })
         }
     },

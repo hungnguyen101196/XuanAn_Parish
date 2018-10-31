@@ -2,6 +2,15 @@ const express = require('express');
 const authRouter = express.Router();
 const auth = require('../configs/configsPassport');
 
+authRouter.use(function(req, res, next) {
+    console.log(`dsf`)
+    var token = req.headers['x-access-token'];
+    console.log(req.headers)
+    console.log(req.body)
+    console.log(req.query)
+    console.log(token)
+    next();
+});
 
 // ContactControler
 const HomeController = require('../controllers/HomeController');
