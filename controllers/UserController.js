@@ -5,9 +5,7 @@ const {
 const isEmpty = require('is-empty');
 const {
     UserCreateValidator
-} = require('../validations/UserValidator')
-const moment = require('moment-timezone');
-moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
+} = require('../validations/UserValidator');
 
 module.exports = {
     index: async (req, res) => {
@@ -20,6 +18,7 @@ module.exports = {
     },
     create: async (req, res) => {
         try {
+            console.log(req.body)
             req.checkBody(UserCreateValidator)
             const errors = req.validationErrors();
             if (errors) {
@@ -54,8 +53,8 @@ module.exports = {
             } else {
                 return res.json({
                     Success: false,
-                    StatusCode: 209,
-                    Message: CODES[209]
+                    StatusCode: 214,
+                    Message: CODES[214]
                 });
             }
         } catch (error) {
@@ -85,7 +84,6 @@ module.exports = {
                 })
             }
         } catch (error) {
-            console.log(error)
             return res.json({
                 Success: false,
                 StatusCode: 502,
@@ -129,7 +127,6 @@ module.exports = {
                 if (!isEmpty(user)) {
                     const set = {
                         _id: req.body._id,
-                        UpdateDate: moment(new Date(Date.now())).format('DD-MM-YYY HH:mm')
                     };
                     if (req.body.UserName) {
                         set.UserName = req.body.UserName;

@@ -5,8 +5,7 @@ const bcrypt = require('bcrypt');
 const beautifulUnique = require('mongoose-beautiful-unique-validation');
 const mongoosePaginate = require('mongoose-paginate');
 const uniqueValidator = require('mongoose-unique-validator');
-const moment = require('moment-timezone');
-moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
+
 
 const UserSchema = new Schema({
     UserName: { type: String, required: true, unique: true },
@@ -20,7 +19,7 @@ const UserSchema = new Schema({
         Address: { type: String, required: true }
     },
     Status: { type: String, default: response.STATUS[200] },
-    CreatedDate: { type: String, default: moment(new Date(Date.now())).format('DD-MM-YYYY HH:mm') },
+    CreatedDate: { type: String },
     UpdatedDate: { type: String },
 });
 

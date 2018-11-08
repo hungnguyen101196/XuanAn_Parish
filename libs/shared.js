@@ -8,5 +8,6 @@ module.exports = {
         date = moment(date).format('dd-mm-yyyy hh-mm-ss');
         return date;
     },
+    formatDate: date => moment(date).format('dd-mm-yyyy'),
     isObjectId: (id) => mongoose.Types.ObjectId.isValid(id) && typeof id !== 'number',
 }

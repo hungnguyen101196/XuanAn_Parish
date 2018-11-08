@@ -2,7 +2,8 @@ const mongoose = require('mongoose');
 const UserModel = require('../models/User');
 const bcrypt = require('bcrypt');
 const response = require('../configs/response');
-const shareModel = require('../models/ShareCorner')
+const shareModel = require('../models/ShareCorner');
+const {generatorTime, formatDate} = require('../libs/shared');
 const Promise = require('bluebird');
 const moment = require('moment-timezone');
 moment().tz("Asia/Ho_Chi_Minh").format("DD-MM-YYYY HH:mm");
@@ -17,12 +18,13 @@ module.exports = {
                     Password: bcrypt.hashSync(data.Password, 14, null),
                     Info: {
                         FullName: data.Info.FullName,
-                        BirthDate: moment(data.Info.BirthDate).format("DD-MM-YYYY"),
+                        BirthDate: formatDate(data.BirthDate),
                         FatherName: data.Info.FatherName,
                         MotherName: data.Info.MotherName,
                         Address: data.Info.Address
                     },
-                    Roles: data.Roles
+                    Roles: data.Roles,
+                    CreatedDate: generatorTime()
                 };
                 UserModel.create(set, (err, user) =>{
                     if(err){
@@ -45,10 +47,10 @@ module.exports = {
     },
     findUser: async(data) => {
         try {
-            const id = {
-                _id: data._id
+            const condition = {
+                UserName: data.UserName
             }
-            let result = await UserModel.findOne(id);
+            let result = await UserModel.findOne(condition);
             console.log(result)
             return result;
         } catch (error) {
@@ -60,9 +62,29 @@ module.exports = {
             const condition = {
                 _id: data._id
             };
-            let result = await UserModel.update(condition, data);
-            console.log('re');
-            console.log(result)
+            const set = {};
+            set.Info = {};
+            set.UpdatedDate = generatorTime();
+            if(data.FullName){
+                set.Info.FullName = data.FullName;
+            }
+            if(data.BirthDate){
+                set.Info.BirthDate = formatDate(data.BirthDate);
+            }
+            if(data.FatherName){
+                set.Info.FatherName = data.FatherName;
+            }
+            if(data.MotherName){
+                set.Info.MotherName = data.MotherName;
+            }
+            if(data.Address){
+                set.Info.Address = data.Address;
+            }
+            if(data.Roles){
+                set.Roles = data.Roles;
+            }
+            let result = await UserModel.update(condition, set);
+
             return result;
         } catch (error) {
             return error;
@@ -104,7 +126,9 @@ module.exports = {
     checkUser: async(data) => {
         return new Promise((resolve, reject) => {
             try {
+                console.log(data)
                 if (data) {
+                    console.log(data)
                     var condition = {
                         UserName: data.UserName
                     };

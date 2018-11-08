@@ -3,12 +3,7 @@ const authRouter = express.Router();
 const auth = require('../configs/configsPassport');
 
 authRouter.use(function(req, res, next) {
-    console.log(`dsf`)
     var token = req.headers['x-access-token'];
-    console.log(req.headers)
-    console.log(req.body)
-    console.log(req.query)
-    console.log(token)
     next();
 });
 
@@ -55,5 +50,10 @@ authRouter.route('/sharecorner/list').post(auth.isAuthentication, ShareCornerCon
 const CommentController = require('../controllers/CommentController');
 authRouter.route('/comment').get(auth.isAuthentication, CommentController.index);
 authRouter.route('/comment/create').post(auth.isAuthentication, CommentController.create);
+
+const CategoryController = require('../controllers/CategoryController');
+authRouter.route('/category/create').post(auth.isAuthentication, CategoryController.create);
+authRouter.route('/category/getParent').get(auth.isAuthentication, CategoryController.getParent);
+authRouter.route('/category/updateParent').post(auth.isAuthentication, CategoryController.updateParent);
 
 module.exports = authRouter;
