@@ -1,5 +1,4 @@
 const ShareCornerModel = require('../models/ShareCorner');
-const mongoose = require('mongoose')
 
 module.exports = {
 
