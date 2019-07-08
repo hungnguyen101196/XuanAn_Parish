@@ -1,6 +1,4 @@
 const ShareCornerService = require('../services/ShareCornerService');
-const Codes = require('../configs/response');
-const mongoose = require('mongoose')
 
 module.exports = {
     index: async(req, res) => {
